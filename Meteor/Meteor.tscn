@@ -14,7 +14,10 @@ visible = false
 polygon = PoolVector2Array( -43.2093, -40.6675, 14.923, -54.2985, 59.6915, -15.4101, 67.5761, 32.1649, 16.9276, 55.2841, -20.8918, 27.0866, -54.0339, 28.1557, -67.3976, -5.25362 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
 position = Vector2( 1.70547, -0.852725 )
 scale = Vector2( 8.48515, 8.21038 )
 
+[connection signal="area_entered" from="." to="." method="_on_Meteor_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Meteor_area_exited"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

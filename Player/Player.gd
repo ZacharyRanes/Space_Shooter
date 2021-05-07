@@ -1,4 +1,5 @@
 extends Area2D
+class_name Player
 
 var plBullet := preload("res://Bullet/Bullet.tscn")
 
@@ -8,7 +9,7 @@ onready var fireDelayTimer := $FireDelayTimer
 
 export var speed: float = 100
 export var fireDelay: float = 0.15
-
+export var life: int = 3
 var vel := Vector2(0,0)
 
 func _process(delta):
@@ -45,3 +46,10 @@ func _physics_process(delta):
 #	position.x = clamp(position.x, 0, viewRect.size.x)
 	position.x = clamp(position.x, viewRect.position.x, viewRect.end.x)
 	position.y = clamp(position.y, viewRect.position.y, viewRect.end.y)
+
+func damage(amount: int):
+	life -= amount
+	print("Player life = %s" %life)
+	if life <= 0:
+		print("PLAYER DIED")
+		queue_free()

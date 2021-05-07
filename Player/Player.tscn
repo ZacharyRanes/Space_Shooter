@@ -14,12 +14,12 @@ region = Rect2( 198, 0, 99, 77 )
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 99, 77 )
+region = Rect2( 99, 0, 99, 77 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 99, 0, 99, 77 )
+region = Rect2( 0, 0, 99, 77 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -30,12 +30,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "Left",
+"name": "Straight",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Straight",
+"name": "Left",
 "speed": 5.0
 } ]
 
@@ -50,3 +50,11 @@ shape = SubResource( 1 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 5 )
 animation = "Straight"
+
+[node name="FiringPositions" type="Node2D" parent="."]
+
+[node name="LeftGun" type="Node2D" parent="FiringPositions"]
+position = Vector2( -35.4, -9 )
+
+[node name="RightGun" type="Node2D" parent="FiringPositions"]
+position = Vector2( 35.4, -9 )

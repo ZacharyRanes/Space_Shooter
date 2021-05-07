@@ -3,6 +3,7 @@ extends Area2D
 var plBullet := preload("res://Bullet/Bullet.tscn")
 
 onready var animatedSprite := $AnimatedSprite
+onready var firingPositions := $FiringPositions
 
 export var speed: float = 100
 var vel := Vector2(0,0)
@@ -16,9 +17,10 @@ func _process(delta):
 		animatedSprite.play("Straight")
 	
 	if Input.is_action_pressed("shoot"):
-		var bullet := plBullet.instance()
-		bullet.position = position
-		get_tree().current_scene.add_child(bullet)
+		for gun in firingPositions.get_children():
+			var bullet := plBullet.instance()
+			bullet.global_position = gun.global_position
+			get_tree().current_scene.add_child(bullet)
 
 func _physics_process(delta):
 	var dirVec := Vector2(0,0)

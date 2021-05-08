@@ -17,6 +17,7 @@ var vel := Vector2(0,0)
 
 func _ready():
 	shieldSprite.visible = false
+	Signals.emit_signal("on_player_life_changed", life)
 
 func _process(delta):
 	if vel.x < 0:
@@ -59,7 +60,7 @@ func damage(amount: int):
 	invincibilityTimer.start(damageInvincibilityTimer)
 	shieldSprite.visible = true
 	life -= amount
-	print("Player life = %s" %life)
+	Signals.emit_signal("on_player_life_changed", life)
 	if life <= 0:
 		print("PLAYER DIED")
 		queue_free()

@@ -1,6 +1,10 @@
 extends Area2D
 class_name Enemy
 
+var plBullet := preload("res://Bullet/EnemyBullet.tscn")
+
+onready var firingPositions := $FiringPositions
+
 export var verticalSpeed := 10.0
 export var health: int = 10
 
@@ -20,6 +24,12 @@ func damage(amount: int):
 	health -= amount
 	if health <= 0:
 		queue_free()
+
+func fire():
+	for gun in firingPositions.get_children():
+		var bullet := plBullet.instance()
+		bullet.global_position = gun.global_position
+		get_tree().current_scene.add_child(bullet)
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

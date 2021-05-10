@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Enemy/Enemy.gd"
 }, {
 "base": "Area2D",
+"class": "Meteor",
+"language": "GDScript",
+"path": "res://Meteor/Meteor.gd"
+}, {
+"base": "Area2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player.gd"
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Enemy": "",
+"Meteor": "",
 "Player": "",
 "SlowShooter": ""
 }

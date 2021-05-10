@@ -1,4 +1,5 @@
 extends Area2D
+class_name Meteor
 
 var pMeteorEffect := preload("res://Meteor/MeteorEffect.tscn")
 

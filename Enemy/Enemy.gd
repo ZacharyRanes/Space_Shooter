@@ -9,6 +9,8 @@ onready var firingPositions := $FiringPositions
 export var verticalSpeed := 10.0
 export var health: int = 10
 
+onready var points: int = 1
+
 var playerInArea: Player = null
 
 func _ready():
@@ -22,11 +24,14 @@ func _physics_process(delta):
 	position.y += verticalSpeed * delta
 
 func damage(amount: int):
+	if health <= 0:
+		return
 	health -= amount
 	if health <= 0:
 		var effect := plEnemyExplosion.instance()
 		effect.global_position = global_position
 		get_tree().current_scene.add_child(effect)
+		Signals.emit_signal("on_score_increment", points)
 		queue_free()
 
 func fire():
